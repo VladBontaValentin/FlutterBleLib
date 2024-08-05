@@ -7,9 +7,6 @@ import 'package:flutter_ble_lib_example/repository/device_repository.dart';
 import 'package:flutter_ble_lib_example/test_scenarios/test_scenarios.dart';
 import 'package:rxdart/rxdart.dart';
 
-import '../model/ble_device.dart';
-import '../repository/device_repository.dart';
-
 class DeviceDetailsBloc {
   final BleManager _bleManager;
   final DeviceRepository _deviceRepository;
@@ -25,24 +22,22 @@ class DeviceDetailsBloc {
 
   Stream<List<DebugLog>> get logs => _logsController.stream;
 
-  Stream<Null?> get disconnectedDevice => _deviceRepository.pickedDevice
-      .skipWhile((bleDevice) => bleDevice != null).cast<Null>();
+  Stream<Null> get disconnectedDevice => _deviceRepository.pickedDevice
+      .skipWhile((bleDevice) => bleDevice != null)
+      .cast<Null>();
 
   List<DebugLog> _logs = [];
   late Logger log;
   late Logger logError;
 
-  DeviceDetailsBloc({
-    DeviceRepository? deviceRepository, 
-    BleManager? bleManager
-  }) 
-  : _deviceRepository = deviceRepository ?? DeviceRepository(),
-    _bleManager = bleManager ?? BleManager(),
-    _connectionStateController =
-      BehaviorSubject<PeripheralConnectionState>.seeded(
-        PeripheralConnectionState.disconnected
-      ),
-    _logsController = PublishSubject<List<DebugLog>>() {
+  DeviceDetailsBloc(
+      {DeviceRepository? deviceRepository, BleManager? bleManager})
+      : _deviceRepository = deviceRepository ?? DeviceRepository(),
+        _bleManager = bleManager ?? BleManager(),
+        _connectionStateController =
+            BehaviorSubject<PeripheralConnectionState>.seeded(
+                PeripheralConnectionState.disconnected),
+        _logsController = PublishSubject<List<DebugLog>>() {
     _bleDevice = _deviceRepository.pickedDevice.value!;
 
     log = (text) {
@@ -147,8 +142,8 @@ class DeviceDetailsBloc {
 
   void monitorCharacteristicForPeripheral() {
     _clearLogs();
-      PeripheralTestOperations(_bleManager, _bleDevice.peripheral, log, logError)
-          .monitorCharacteristicForPeripheral();
+    PeripheralTestOperations(_bleManager, _bleDevice.peripheral, log, logError)
+        .monitorCharacteristicForPeripheral();
   }
 
   void monitorCharacteristicForService() {
