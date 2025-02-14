@@ -1,0 +1,2 @@
+/Users/VladBonta/Mine/FlutterBlueLib/example/android/app/.cxx/Debug/6i1e3g3k/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/VladBonta/Mine/FlutterBlueLib/example/android/app/.cxx/Debug/6i1e3g3k/armeabi-v7a/CMakeFiles/rebuild_cache.dir

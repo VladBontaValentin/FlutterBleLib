@@ -1,14 +1,14 @@
+plugins {
+    id "com.android.application"
+    id "kotlin-android"
+    id "dev.flutter.flutter-gradle-plugin"
+}
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
     localPropertiesFile.withReader('UTF-8') { reader ->
         localProperties.load(reader)
     }
-}
-
-def flutterRoot = localProperties.getProperty('flutter.sdk')
-if (flutterRoot == null) {
-    throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
@@ -21,20 +21,26 @@ if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
 
-apply plugin: 'com.android.application'
-apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
+
 
 android {
-    compileSdkVersion 28
+    namespace "com.polidea.flutter_ble_lib_example"
+    compileSdkVersion 35
 
-    lintOptions {
-        disable 'InvalidPackage'
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+        coreLibraryDesugaringEnabled true
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
     }
 
     defaultConfig {
         applicationId "com.polidea.flutter_ble_lib_example"
-        minSdkVersion 18
-        targetSdkVersion 28
+        minSdkVersion 29
+        targetSdkVersion 35
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -49,13 +55,12 @@ android {
         }
         debug {}
         profile {
-            // Specifies a sorted list of fallback build types that the
-            // plugin should try to use when a dependency does not include a
-            // "staging" build type. You may specify as many fallbacks as you
-            // like, and the plugin selects the first build type that's
-            // available in the dependency.
+
             matchingFallbacks = ['debug', 'release']
         }
+    }
+    lint {
+        disable 'InvalidPackage'
     }
 }
 
@@ -64,7 +69,8 @@ flutter {
 }
 
 dependencies {
-    testImplementation 'junit:junit:4.12'
-    androidTestImplementation 'androidx.test:runner:1.2.0'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.6.1'
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:2.1.4'
 }

@@ -1,0 +1,20 @@
+{
+  "buildFiles": [
+    "/Users/VladBonta/Mine/oldFlutter2/packages/flutter_tools/gradle/src/main/groovy/CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "/Users/VladBonta/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+      "-C",
+      "/Users/VladBonta/Mine/FlutterBlueLib/example/android/app/.cxx/Debug/6i1e3g3k/x86_64",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "/Users/VladBonta/Library/Android/sdk/cmake/3.22.1/bin/ninja",
+    "-C",
+    "/Users/VladBonta/Mine/FlutterBlueLib/example/android/app/.cxx/Debug/6i1e3g3k/x86_64",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {}
+}
