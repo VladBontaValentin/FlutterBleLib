@@ -80,8 +80,7 @@ class DeviceListScreenState extends State<DevicesListScreen> {
         title: Text('Bluetooth devices'),
       ),
       body: StreamBuilder<List<BleDevice>>(
-        initialData:
-            devicesBloc.visibleDevices.valueWrapper?.value ?? <BleDevice>[],
+        initialData: devicesBloc.visibleDevices.valueOrNull ?? <BleDevice>[],
         stream: devicesBloc.visibleDevices,
         builder: (context, snapshot) => RefreshIndicator(
           onRefresh: devicesBloc.refresh,
