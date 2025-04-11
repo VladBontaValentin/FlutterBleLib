@@ -25,16 +25,15 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 28
-
+    compileSdk = 34
     lintOptions {
         disable 'InvalidPackage'
     }
 
     defaultConfig {
         applicationId "com.polidea.flutter_ble_lib_example"
-        minSdkVersion 18
-        targetSdkVersion 28
+        minSdkVersion 29
+        targetSdkVersion 29
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

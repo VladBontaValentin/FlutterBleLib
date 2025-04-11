@@ -22,7 +22,7 @@ class DeviceDetailsBloc {
 
   Stream<List<DebugLog>> get logs => _logsController.stream;
 
-  Stream<Null> get disconnectedDevice => _deviceRepository.pickedDevice
+  Stream<Null?> get disconnectedDevice => _deviceRepository.pickedDevice
       .skipWhile((bleDevice) => bleDevice != null)
       .cast<Null>();
 

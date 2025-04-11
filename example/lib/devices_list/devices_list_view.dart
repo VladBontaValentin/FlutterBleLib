@@ -80,7 +80,8 @@ class DeviceListScreenState extends State<DevicesListScreen> {
         title: Text('Bluetooth devices'),
       ),
       body: StreamBuilder<List<BleDevice>>(
-        initialData: devicesBloc.visibleDevices.value,
+        initialData:
+            devicesBloc.visibleDevices.valueWrapper?.value ?? <BleDevice>[],
         stream: devicesBloc.visibleDevices,
         builder: (context, snapshot) => RefreshIndicator(
           onRefresh: devicesBloc.refresh,
@@ -137,12 +138,11 @@ class DevicesList extends ListView {
     switch (device.category) {
       case DeviceCategory.sensorTag:
         return CircleAvatar(
-          child: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Image.asset('assets/ti_logo.png'),
-          ),
-          backgroundColor: Theme.of(context).canvasColor,
-        );
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Image.asset('assets/ti_logo.png'),
+            ),
+            backgroundColor: Theme.of(context).canvasColor);
       case DeviceCategory.hex:
         return CircleAvatar(
             child: CustomPaint(painter: HexPainter(), size: Size(20, 24)),
