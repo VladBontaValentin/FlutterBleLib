@@ -25,6 +25,7 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    namespace "com.polidea.flutter_ble_lib_example"
     compileSdk = 34
     lintOptions {
         disable 'InvalidPackage'
