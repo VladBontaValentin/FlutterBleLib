@@ -8,7 +8,7 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.4.2'
+        classpath 'com.android.tools.build:gradle:8.12.3'
     }
 }
 
@@ -23,7 +23,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 36
 
     defaultConfig {
         minSdkVersion 29
@@ -35,6 +35,6 @@ android {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.1.0'
-    implementation 'com.github.Polidea:MultiPlatformBleAdapter:0.1.8'
+    implementation 'androidx.annotation:annotation:1.9.1'
+    implementation 'com.github.VladBontaValentin:MultiPlatformBleAdapter:master'
 }
